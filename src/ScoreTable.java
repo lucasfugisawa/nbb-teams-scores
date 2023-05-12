@@ -1,7 +1,7 @@
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class ScoreRanking {
+public class ScoreTable {
 
     private final LinkedHashMap<String, TeamScore> scoreTable = new LinkedHashMap<>();
     private final LinkedList<MatchResults> matchResults = new LinkedList<>();
@@ -9,7 +9,7 @@ public class ScoreRanking {
     private final LocalDateTime createdAt = LocalDateTime.now();
     private LocalDateTime updatedAt = LocalDateTime.now();
 
-    public ScoreRanking accountMatchResults(MatchResults results) {
+    public ScoreTable accountMatchResults(MatchResults results) {
 
         scoreTable.merge(results.getTeam1(),
                 new TeamScore(
