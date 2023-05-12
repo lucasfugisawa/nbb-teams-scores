@@ -60,7 +60,10 @@ public class ScoreTable {
 
     public LinkedHashMap<String, TeamScore> getRanking(long maxResults) {
         return scoreTable.entrySet().stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.comparing(TeamScore::getVictories).thenComparing(TeamScore::getScore).reversed()))
+                .sorted(Map.Entry.comparingByValue(
+                        Comparator.comparing(TeamScore::getVictories)
+                                .thenComparing(TeamScore::getScore)
+                                .reversed()))
                 .limit(maxResults)
                 .collect(
                         LinkedHashMap::new,
@@ -75,7 +78,7 @@ public class ScoreTable {
 
     @Override
     public String toString() {
-        return "ScoreRanking{" +
+        return "ScoreTable{" +
                 "scoreTable=" + scoreTable +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
