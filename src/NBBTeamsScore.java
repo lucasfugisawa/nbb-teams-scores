@@ -23,12 +23,12 @@ public class NBBTeamsScore {
 
         String contents = readFile(fileName);
         List<MatchResults> matches = loadMatchResults(contents);
-        ScoreTable scoreTable = computeRanking(matches);
+        ScoreTable scoreTable = computeScores(matches);
 
         scoreTable.getRanking(option).forEach(NBBTeamsScore::printTeamScore);
     }
 
-    private static ScoreTable computeRanking(List<MatchResults> matches) {
+    private static ScoreTable computeScores(List<MatchResults> matches) {
         ScoreTable ranking = new ScoreTable();
         matches.forEach(ranking::accountMatchResults);
         return ranking;
