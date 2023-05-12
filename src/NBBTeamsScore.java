@@ -23,9 +23,9 @@ public class NBBTeamsScore {
 
         String contents = readFile(fileName);
         List<MatchResults> matches = loadMatchResults(contents);
-        ScoreTable ranking = computeRanking(matches);
+        ScoreTable scoreTable = computeRanking(matches);
 
-        ranking.getRanking(option).forEach(NBBTeamsScore::printTeamScore);
+        scoreTable.getRanking(option).forEach(NBBTeamsScore::printTeamScore);
     }
 
     private static ScoreTable computeRanking(List<MatchResults> matches) {
