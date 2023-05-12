@@ -6,9 +6,6 @@ public class ScoreTable {
     private final LinkedHashMap<String, TeamScore> scoreTable = new LinkedHashMap<>();
     private final LinkedList<MatchResults> matchResults = new LinkedList<>();
 
-    private final LocalDateTime createdAt = LocalDateTime.now();
-    private LocalDateTime updatedAt = LocalDateTime.now();
-
     public ScoreTable accountMatchResults(MatchResults results) {
 
         scoreTable.merge(results.getTeam1(),
@@ -38,7 +35,6 @@ public class ScoreTable {
         );
 
         matchResults.add(results);
-        this.updatedAt = LocalDateTime.now();
         return this;
     }
 
@@ -48,14 +44,6 @@ public class ScoreTable {
 
     public List<MatchResults> getAccountedMatchResults() {
         return Collections.unmodifiableList(matchResults);
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
     }
 
     public LinkedHashMap<String, TeamScore> getRanking(long maxResults) {
@@ -80,8 +68,6 @@ public class ScoreTable {
     public String toString() {
         return "ScoreTable{" +
                 "scoreTable=" + scoreTable +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
                 '}';
     }
 }
