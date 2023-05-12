@@ -73,8 +73,6 @@ public class ScoreRanking {
         return getRanking(scoreTable.size());
     }
 
-
-
     @Override
     public String toString() {
         return "ScoreRanking{" +
