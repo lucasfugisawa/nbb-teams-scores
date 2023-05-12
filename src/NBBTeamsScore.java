@@ -20,14 +20,17 @@ public class NBBTeamsScore {
             System.exit(0);
         }
 
-        String content = readFile(fileName);
-
-        List<MatchResults> matches = loadMatchResults(content);
-
-        ScoreRanking ranking = new ScoreRanking();
-        matches.forEach(ranking::accountMatchResults);
+        String contents = readFile(fileName);
+        List<MatchResults> matches = loadMatchResults(contents);
+        ScoreRanking ranking = computeRanking(matches);
 
         ranking.getRanking(option).forEach(NBBTeamsScore::printTeamScore);
+    }
+
+    private static ScoreRanking computeRanking(List<MatchResults> matches) {
+        ScoreRanking ranking = new ScoreRanking();
+        matches.forEach(ranking::accountMatchResults);
+        return ranking;
     }
 
     public static String readFile(String fileName) {
